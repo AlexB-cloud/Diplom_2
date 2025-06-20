@@ -1,24 +1,13 @@
 package ru.yandex.tests.User;
 
-import com.google.gson.Gson;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
-import org.junit.After;
 import org.junit.Test;
-import ru.yandex.models.User.User;
 import ru.yandex.models.User.UserResponse;
-import ru.yandex.steps.UserSteps;
-
-import java.util.Objects;
+import ru.yandex.tests.BaseTest;
 
 @DisplayName("Тесты на изменение пользователя")
-public class UserPatchTests {
-    private final User uniqueUser = new User("13autotestrandomemael123@at.com", "3passwordVEryHard123", "3Alex1337555");
-    private final User patchedUser = new User(uniqueUser.getEmail() + "123", uniqueUser.getPassword() + "123", uniqueUser.getName() + "123");
-    private final Gson gson = new Gson();
-    private final UserSteps userSteps = new UserSteps();
-    private UserResponse userResponse;
-    private UserResponse userPatchedResponse;
+public class UserPatchTests extends BaseTest {
 
     @Test
     @DisplayName("Изменение пользователя с авторизацией")
@@ -43,14 +32,5 @@ public class UserPatchTests {
         response = userSteps.patchUserInfoWithoutAuth(patchedUser);
         userPatchedResponse = gson.fromJson(response.getBody().asString(), UserResponse.class);
         userSteps.checkResponseFailureWithoutAuthUserPatch(response, userPatchedResponse);
-    }
-    @After
-    public void tearDown() {
-        if (userResponse.getAccessToken() != null) {
-            userSteps.deleteUser(userResponse.getAccessToken());
-        }
-        if (userPatchedResponse.getAccessToken() != null && !Objects.equals(userPatchedResponse.getAccessToken(), userResponse.getAccessToken())) {
-            userSteps.deleteUser(userPatchedResponse.getAccessToken());
-        }
     }
 }

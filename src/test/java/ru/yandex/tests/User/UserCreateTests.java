@@ -1,21 +1,13 @@
 package ru.yandex.tests.User;
 
-import com.google.gson.Gson;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
-import org.junit.After;
 import org.junit.Test;
 import ru.yandex.models.User.UserResponse;
-import ru.yandex.models.User.User;
-import ru.yandex.steps.UserSteps;
+import ru.yandex.tests.BaseTest;
 
 @DisplayName("Тесты на создание пользователя")
-public class UserCreateTests {
-    private final User uniqueUser = new User("13autotestrandomemael123@at.com","3passwordVEryHard123","3Alex1337555");
-    private final User noPasswordUser = new User("autotestrandom123emael@at.com","Alexxx1337197", true);
-    private final Gson gson = new Gson();
-    private final UserSteps userSteps = new UserSteps();
-    private UserResponse userResponse;
+public class UserCreateTests extends BaseTest {
 
     @Test
     @DisplayName("Успешное создание пользователя")
@@ -44,11 +36,5 @@ public class UserCreateTests {
         response = userSteps.createUser(uniqueUser);
         UserResponse userResponseFailure = gson.fromJson(response.getBody().asString(), UserResponse.class);
         userSteps.checkResponseAlreadyExistUserCreate(response, userResponseFailure);
-    }
-    @After
-    public void tearDown() {
-        if (userResponse.getAccessToken() != null){
-        userSteps.deleteUser(userResponse.getAccessToken());
-        }
     }
 }

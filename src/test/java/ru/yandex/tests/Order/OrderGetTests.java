@@ -1,25 +1,16 @@
 package ru.yandex.tests.Order;
 
-import com.google.gson.Gson;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
-import org.junit.After;
 import org.junit.Test;
 import ru.yandex.models.Order.Order;
-import ru.yandex.models.User.User;
 import ru.yandex.models.User.UserResponse;
-import ru.yandex.steps.OrderSteps;
-import ru.yandex.steps.UserSteps;
+import ru.yandex.tests.BaseTest;
 
 import java.util.ArrayList;
 
 @DisplayName("Тесты на получение оформленного заказа")
-public class OrderGetTests {
-    private final User uniqueUser = new User("13autotestrandomemael123@at.com","3passwordVEryHard123","3Alex1337555");
-    private final Gson gson = new Gson();
-    private final UserSteps userSteps = new UserSteps();
-    private final OrderSteps orderSteps = new OrderSteps();
-    private UserResponse userResponse;
+public class OrderGetTests extends BaseTest {
 
     @Test
     @DisplayName("Получение заказа без авторизации")
@@ -46,12 +37,5 @@ public class OrderGetTests {
         response = orderSteps.getOrderWithAuth(userResponse.getAccessToken());
         orderSteps.checkGetOrderWithAuth(response,order,orderId,orderNumber);
 
-    }
-
-    @After
-    public void tearDown() {
-        if (userResponse!= null && userResponse.getAccessToken() != null) {
-            userSteps.deleteUser(userResponse.getAccessToken());
-        }
     }
 }
