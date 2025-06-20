@@ -1,0 +1,1 @@
+{"success":true,"user":{"email":"13autotestrandomemael123@at.com","name":"3Alex1337555"},"accessToken":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTRmZmIwOWVkMjgwMDAxYjYyYjk2MyIsImlhdCI6MTc1MDQwMDk0NCwiZXhwIjoxNzUwNDAyMTQ0fQ.ZQ6NIrwdW8eijs-5zkeyQlcm7LLDDQBmAiy0dgX18sk","refreshToken":"67dd4ef005d381d8911aa4432622a723773fdc4fd14ae9142b6732b19811882ef3ff7b6845b7d46f"}
