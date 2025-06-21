@@ -32,5 +32,6 @@ public class UserPatchTests extends BaseTest {
         response = userSteps.patchUserInfoWithoutAuth(patchedUser);
         userPatchedResponse = gson.fromJson(response.getBody().asString(), UserResponse.class);
         userSteps.checkResponseFailureWithoutAuthUserPatch(response, userPatchedResponse);
+        userSteps.checkUserCredentialsNotChangeAfterFailurePatch(userResponse.getAccessToken(),patchedUser);
     }
 }
