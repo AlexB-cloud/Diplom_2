@@ -1,0 +1,1 @@
+{"success":true,"accessToken":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTRmZmIyOWVkMjgwMDAxYjYyYjk2NyIsImlhdCI6MTc1MDQwMDk0NiwiZXhwIjoxNzUwNDAyMTQ2fQ.YvlWutAyNRrXY22vU25DSa_yw0sHisX9Mfv0l_cCMlI","refreshToken":"35f76ba1d4eae4f03c84fbdce028214ff73f9a3ea90a8ff858bd15fc2ffa1cf6c8a1c31fb66959ae","user":{"email":"13autotestrandomemael123@at.com","name":"3Alex1337555"}}
